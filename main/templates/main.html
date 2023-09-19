@@ -1,6 +1,109 @@
-<h1 style="font-family:verdana">Aplikasi GudangGame</h1>
+<style>
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 50px;
+        margin-top: 20px;
+    }
 
-<h5 style="font-family:verdana">Name: </h5>
-<p style="font-family:verdana">{{ name }}<p>
-<h5 style="font-family:verdana">Class: </h5>
-<p style="font-family:verdana">{{ class }}<p>
+    .product-table th, .product-table td {
+        font-family:'Courier New', Courier, monospace;
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        border-color: black;
+    }
+
+    .product-table th {
+        background-color: #3b5d81;
+        color: white;
+    }
+
+    .add-button {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #3b5d81;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .add-button:hover {
+        background-color: #0056b3;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family:'Courier New', Courier, monospace;
+        margin-bottom: 5px; 
+    }
+
+    p {
+        font-family:'Courier New', Courier, monospace;
+        margin-top: 5px;
+        font-weight: bold; 
+    }
+
+    .Title {
+        text-align: center;
+        font-style: italic;
+    }
+
+    .Bio {
+        text-align: center;
+    }
+
+    .total {
+        font-size: medium;
+    }
+</style>
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="Title">Gudang Game : The Inventory for Games</h1>
+
+    <h4 class="Bio">Made by:</h4>
+    <h5 class="Bio">Name:</h5>
+    <p class="Bio">{{ name }}</p>
+
+    <h5 class="Bio">Class:</h5>
+    <p class="Bio">{{ class }}</p>
+
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Developer</th>
+                <th>Genre</th>
+                <th>Price ($)</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+    
+        <h5 class="total">Anda telah menambahkan game sebanyak {{total}} game</h5>
+        
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.developer }}</td>
+                    <td>{{ product.genre }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.amount }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ tanggal }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <br />
+    
+    <a href="{% url 'main:create_product' %}">
+        <button class="add-button">
+            Add New Game
+        </button>
+    </a>
+{% endblock content %}

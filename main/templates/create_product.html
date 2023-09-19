@@ -1,0 +1,36 @@
+<style>
+    h1, h2, h3, h4, h5, h6, tr, td {
+        font-family:'Courier New', Courier, monospace;
+        margin-bottom: 5px; 
+        text-align: left;
+    }
+
+    input[type="submit"] {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #3b5d81;
+        color: white;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>   
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1>Add New Game</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Add Game"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
