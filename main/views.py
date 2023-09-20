@@ -16,7 +16,7 @@ def show_main(request):
         'class': 'PBP F', # Kelas PBP kamu
         'products': products,
         'total' : products.__len__(),
-        'tanggal' : datetime.date.today().strftime("%d/%m/%Y")
+        # 'tanggal' : datetime.date.today().strftime("%d/%m/%Y")
     }
 
     return render(request, "main.html", context)
