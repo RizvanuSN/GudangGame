@@ -19,7 +19,7 @@
         color: white;
     }
 
-    .add-button {
+    .add-button, .logout-button {
         font-family:'Courier New', Courier, monospace;
         background-color: #3b5d81;
         color: #fff;
@@ -27,7 +27,18 @@
         cursor: pointer;
     }
 
-    .add-button:hover {
+    .add-button:hover, .logout-button:hover{
+        background-color: #0056b3;
+    }
+
+    .btn_bonus {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #3b5d81;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .btn_bonus:hover{
         background-color: #0056b3;
     }
 
@@ -91,7 +102,21 @@
                     <td>{{ product.developer }}</td>
                     <td>{{ product.genre }}</td>
                     <td>{{ product.price }}</td>
-                    <td>{{ product.amount }}</td>
+                    <td>
+                        <form method="post" action="{% url 'main:plus_product_amount' product.id %}">
+                            {% csrf_token %}
+                            <button class="btn_bonus">+</button>
+                        </form>
+                        {{ product.amount }}
+                        <form method="post" action="{% url 'main:minus_product_amount' product.id %}">
+                            {% csrf_token %}
+                            <button class="btn_bonus">-</button>
+                        </form>
+                        <form method="post" action="{% url 'main:remove_product' product.id %}">
+                            {% csrf_token %}
+                            <button class="btn_bonus">Delete</button>
+                        </form>
+                    </td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.date_added }}</td>
                 </tr>
@@ -106,4 +131,10 @@
             Add New Game
         </button>
     </a>
+    <a href="{% url 'main:logout' %}">
+        <button class="logout-button">
+            Logout
+        </button>
+    </a>
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}

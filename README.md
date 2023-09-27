@@ -327,3 +327,451 @@ pada 'main.html' dan memanggil key 'total'
 
 - JSON BY ID
 <img src="/READMEIMG/XML_BY_ID.jpg" alt="JSON BY ID">
+
+# TUGAS 4!!
+# 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+UserCreationForm adalah sebuah formulir yang disediakan oleh Django pada modul 'django.contrib.auth.forms' dalam membantu proses pembuatan akun pada aplikasi web berbasis Django. Form ini digunakan pada umumnya untuk memberi izin kepada pengguna untuk mendaftar atau membuat akun baru di web berbasis Django.
+
+Kelebihan dari UserCreationForm adalah :
+- Keamanan yang terintergasi termasuk validasi input berupa email dan username unik, hashing kata sandi, dan memastikan kata sandi yang dimasukin telah memenuhi kriteria yang kuat
+- Mendukung integrasi dengan model User pada Django sehingga dapat mudah dihubungan dengan basis data melalui operasi CRUD (Create, Read, Update, Delete)
+- Memiliki fleksibilitas konfigurasi yang dapat dengan mudah melakukan modifikasi formulir sesuai kebutuhan proyek dengan menambahkan/menghapus kolom formulir, dll. 
+
+Kekurangan dari UserCreationForm adalah :
+- Memiliki keterbatasan dalam tampilan sehingga diperlukan merancang tampilan atau template yang sesuai untuk halaman pendaftaran, dll.
+- Memiliki ketergantungan terhadap model User sehingga perlu menyesuaikan model User atau membuat model User kustom jika ingin ada tambahan.
+- Tidak cocok untuk proyek yang kompleks dan membutuhkan persyaratan otentikasi yang khusus.
+
+# 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+| Aspek Perbeedaan | Autentikasi | Otorisasi |
+|----------|----------|----------|
+| Tujuan | Memverifikasi identitas pengguna sistem | Memastikan  
+apakah pengguna atau sistem memiliki perizinan yang penting untuk melakukan aksi spesifik atau akses suatu data |
+| Dalam Django | Memiliki views, forms, dan fungsi backend | Dapat mendefinisikan perizinan dan mengelompokan penggunna ke dalam grup |
+| Kepentingan | Mencegah pengguna yang tidak memiliki akses pada suatu data melakukan action | Memastikan pengguna terbatas perizinanannya terhadap role |
+
+Alasan autentikasi dan otorisasi penting :
+- Kedua proses ini memastikan keamanan aplikasi dengan autentikasi memstikan hanya pengguna yang terverifikasi yang bisa masuk dan otorisasi memastikan hanya beberapa kelompok pengguna dapat melakukan action tertentu dan mengakses data tertentu.
+- Mengikuti kebutuhan legal dan regulasi seperti GDPR, HIPAA, dan PCI DSS yang mewajibkan kontrol strict terhadap akses pengguna terhadap data.
+- Memastikan user experience yang baik dengan menunjukan data yang relevan bagi pengguna.
+
+# 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Cookies adalah bagian kecil dari data yang dapat dikirim oleh server web menuju peramban web pengguna dan disimpan secara lokal oleh peramban web. Django menggunakan cookies untuk mengelola data sesi pengguna dengan melakukan :
+- Menjadi session management dengan menyimpan user-specific information
+- Menyimpan session ID
+- Memprovide Cookie-Based Session Middleware
+- Menjadi session configuration
+
+# 4.  Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+Pada pengembangan web, pengggunaan web dianggap aman pada umumnya. Akan tetapi, ada beberapa risiko yang perlu diperhatikan. Cookies dapat mengancam keamanan pengguna karena digunakan untuk menyimpan informasi sensitif dan jika tidak diimplementasikan dengan baik, data pengguna terancam keamanannya. Cookies juga terancam dengan serangan XSS dan CSRF yang dapat mengancam keamanan jika tidak ada langkah - langkah keamanan yang tepat. Cookies juga dapat melacak pengguna tanpa perizinan mereka. 
+
+Dengan itu, web developer harus menerapkan sistem keamanan terbaik dengan menggunakan HTTPS, mengatur flag HttpOnly, dan memberikan informasi yang jelas dan memberi notifikasi dan permintaan persetujuan pengguna saat menggunakan cookies untuk melacak aktivitas mereka.
+
+# 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+## Menambahkan Halaman Register
+- Melakukan import 'redirect', 'UserCreationForm', 'messages' pada 'views.py'
+~~~
+from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages  
+~~~
+
+- Membuat file 'register.html' dan juga menambahckan style block yang sesuai
+~~~
+<style>
+
+    .daftar_btn {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #3b5d81;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .daftar_btn:hover {
+        background-color: #0056b3;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family:'Courier New', Courier, monospace;
+        margin-bottom: 5px; 
+    }
+
+    p, ul, .login {
+        font-family:'Courier New', Courier, monospace;
+        margin-top: 5px;
+    }
+
+</style>
+
+
+
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Register</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "login">
+    
+    <h1>Register</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td><input class="daftar_btn" type="submit" name="submit" value="Daftar"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+
+{% endblock content %}
+~~~
+
+- Membuat function 'register' dalam menghubungkan html templates dan halaman pendaftaran
+~~~
+def register(request):
+form = UserCreationForm()
+
+if request.method == "POST":
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Your account has been successfully created!')
+        return redirect('main:login')
+context = {'form':form}
+return render(request, 'register.html', context)
+~~~
+
+- Melakukan import function 'register' dan menambahkan path nya di dalam urls.py 
+~~~
+from main.views import register
+~~~
+~~~
+...
+path('register/', register, name='register'), 
+...
+~~~
+
+## Menambahkan halaman login
+- Melakukan import 'authenticate' dan 'login' pada 'views.py'
+~~~
+from django.contrib.auth import authenticate, login
+~~~
+
+- Membuat function 'login_user' pada 'views.py'
+~~~
+def login_user(request):
+if request.method == 'POST':
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('main:show_main')
+    else:
+        messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+context = {}
+return render(request, 'login.html', context)
+~~~
+
+- Membuat function 'login_user' pada 'views,py'
+~~~
+def login_user(request):
+if request.method == 'POST':
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('main:show_main')
+    else:
+        messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+context = {}
+return render(request, 'login.html', context)
+~~~
+
+- Membuat file 'login.html' pada templates dan menambahkan style block yang sesuai
+~~~
+<style>
+    .login_btn {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #3b5d81;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .login_btn:hover {
+        background-color: #0056b3;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        font-family:'Courier New', Courier, monospace;
+        margin-bottom: 5px; 
+    }
+
+    p, td, tr, a, t {
+        font-family:'Courier New', Courier, monospace;
+        margin-top: 5px;
+        font-weight: bold; 
+    }
+</style>
+
+
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "login">
+
+    <h1>GudangGame Login</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+        
+    <t>Don't have an account yet?</t> <a href="{% url 'main:register' %}">Register Now</a>
+
+</div>
+
+{% endblock content %}
+~~~
+
+- Melakukan import function 'login_user' dan menambahkan path url nya pada 'urls.py'
+~~~
+from main.views import login_user
+~~~
+~~~
+...
+path('login/', login_user, name='login'),
+...
+~~~
+
+## Menambahkan fitur logout
+- Melakukan import 'logout' pada 'views.py'
+~~~
+from django.contrib.auth import logout
+~~~
+
+- Menambahkan function 'logout_user'
+~~~
+def logout_user(request):
+    logout(request)
+    return redirect('main:login')
+~~
+
+- Membuat button untuk melakukan logout pada 'main.html'
+~~~
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a> 
+~~~
+
+- Melakukan import function 'logout_user' dan menambahkan path url nya pada 'urls.py'
+~~~
+from main.views import logout_user
+~~~
+~~~
+...
+path('logout/', logout_user, name='logout'),
+...
+~~~
+
+## Melakukan rekstriksi akses halaman Main
+- Melakukan import 'login_required' pada 'views.py'
+~~~
+from django.contrib.auth.decorators import login_required
+~~~
+
+- Menambahkan line berikut di atas function 'show_main' agar halaman main hanya dapat diakses setelah login
+~~~
+...
+@login_required(login_url='/login')
+def show_main(request):
+...
+~~~
+
+## Menggunakan data dari Cookies
+- Melakukan import 'datetime' pada 'views.py'
+~~~
+import datetime
+~~~
+
+- Menyesuaikan function 'login_user' pada 'views,py' agar dapat melihat last login
+~~~
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            response = HttpResponseRedirect(reverse("main:show_main")) 
+            response.set_cookie('last_login', str(datetime.datetime.now()))
+            return response
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'login.html', context)
+~~~
+
+- Membuat function 'show_main' pada 'views.py' agar dapat memproses 'last_login' dengan menambahkannya pada dictionary 'context'
+~~~
+def show_main(request):
+    products = Product.objects.filter(user=request.user)
+
+    context = {
+        'name': request.user.username,
+        'class': 'PBP F', # Kelas PBP kamu
+        'products': products,
+        'total' : products.__len__(),
+        'last_login': request.COOKIES['last_login'],
+    }
+
+    return render(request, "main.html", context)
+~~~
+
+- Membuat function 'logout_user' sehingga menghapus cookie saat melakukan logout
+~~~
+def logout_user(request):
+    logout(request)
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
+~~~
+
+- Menambahkan line di bawah ini pada 'main.html' agar menampilkan last login
+~~~
+...
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+...
+~~~
+
+## Melakukan penghubungan Model Product dengan User
+- Melakukan import User pada 'models.py'
+~~~
+from django.contrib.auth.models import User
+~~~
+
+- Menambahkan attribute 'User' pada Product
+~~~
+...
+user = models.ForeignKey(User, on_delete=models.CASCADE)
+...
+~~~
+
+- Menyesuaikan function 'create_prouct' pada 'views.py' 
+~~~
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+ if form.is_valid() and request.method == "POST":
+    product = form.save(commit=False)
+    product.user = request.user
+    product.save()
+    return HttpResponseRedirect(reverse('main:show_main'))
+~~~
+
+## Implementasi Bonus
+- Membuat tiga function baru pada 'views.py' yang akan dijalankan sesuai dengan button nya
+~~~
+def plus_product_amount(request, id):
+    product = Product.objects.get(id=id)
+    product.amount += 1
+    product.save()
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response
+
+def minus_product_amount(request, id):
+    product = Product.objects.get(id=id)
+    if (product.amount > 0):
+        product.amount -= 1
+        product.save()
+    else :
+        messages.info(request, f'Jumlah {product.name} sudah bernilai 0!')
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response
+
+def remove_product(request, id):
+    Product.objects.filter(pk=id).delete()
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response
+~~~
+
+- Mengimport function dan menambahkan path url function tersebut pada urls.py
+~~~
+...
+from main.views plus_product_amount, minus_product_amount, remove_product
+...
+~~~
+~~~
+...
+path('plus_product_amount/<int:id>', plus_product_amount, name='plus_product_amount'),
+path('minus_product_amount/<int:id>', minus_product_amount, name='minus_product_amount'),
+path('remove_product/<int:id>', remove_product, name='remove_product'),
+...
+~~~
+
+- Mengatur penempatan button pada 'main.html'
+~~~
+...
+<td>
+    <form method="post" action="{% url 'main:plus_product_amount' product.id %}">
+        {% csrf_token %}
+        <button class="btn_bonus">+</button>
+    </form>
+    {{ product.amount }}
+    <form method="post" action="{% url 'main:minus_product_amount' product.id %}">
+        {% csrf_token %}
+        <button class="btn_bonus">-</button>
+    </form>
+    <form method="post" action="{% url 'main:remove_product' product.id %}">
+        {% csrf_token %}
+        <button class="btn_bonus">Delete</button>
+    </form>
+</td>
+...
+~~~

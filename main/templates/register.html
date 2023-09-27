@@ -1,0 +1,61 @@
+<style>
+
+    .daftar_btn {
+        font-family:'Courier New', Courier, monospace;
+        background-color: #3b5d81;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .daftar_btn:hover {
+        background-color: #0056b3;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family:'Courier New', Courier, monospace;
+        margin-bottom: 5px; 
+    }
+
+    p, ul, .login {
+        font-family:'Courier New', Courier, monospace;
+        margin-top: 5px;
+    }
+
+</style>
+
+
+
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Register</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "login">
+    
+    <h1>Register</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td><input class="daftar_btn" type="submit" name="submit" value="Daftar"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+
+{% endblock content %}
