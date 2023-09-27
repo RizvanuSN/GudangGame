@@ -345,8 +345,7 @@ Kekurangan dari UserCreationForm adalah :
 # 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
 | Aspek Perbeedaan | Autentikasi | Otorisasi |
 |----------|----------|----------|
-| Tujuan | Memverifikasi identitas pengguna sistem | Memastikan  
-apakah pengguna atau sistem memiliki perizinan yang penting untuk melakukan aksi spesifik atau akses suatu data |
+| Tujuan | Memverifikasi identitas pengguna sistem | Memastikan apakah pengguna atau sistem memiliki perizinan yang penting untuk melakukan aksi spesifik atau akses suatu data |
 | Dalam Django | Memiliki views, forms, dan fungsi backend | Dapat mendefinisikan perizinan dan mengelompokan penggunna ke dalam grup |
 | Kepentingan | Mencegah pengguna yang tidak memiliki akses pada suatu data melakukan action | Memastikan pengguna terbatas perizinanannya terhadap role |
 
