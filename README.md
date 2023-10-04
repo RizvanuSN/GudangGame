@@ -774,3 +774,54 @@ path('remove_product/<int:id>', remove_product, name='remove_product'),
 </td>
 ...
 ~~~
+<<<<<<< HEAD
+=======
+
+# TUGAS 4!!
+
+# 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+Element selector adalah jenis selector pada CSS yang dapat digunakan dalam memilih elemen HTML berdasarkan nama elemennya. Adapun tipe dan manfaat dari tiap element selector :
+- Universal Selector ('*'):
+Universal selector adalah selector yang dapat digunakan terhadap setiap elemen pada halaman web. Dapat digunakan ketika ingin menerapkan suatu style terhadap setiap elemen pada halaman web. Pada umumnya, selector ini digunakan saat ingin menerapkan global style seperti margin default dan padding menjadi 0 Selector ini dapat menurunkan performa jika digunakan secara berlebihan sehingga pemakaiannya harus diperhatikan dan dibataskan. Universal selector bermanfaat untuk melakukan penerapan style secara global, melakukan reset default, debugging, dan menerapkan baseline yang konsisten. 
+
+- Type Selector:
+Type selector adalah selector yang memilih semua elemen dengan HTML tag yang spesifik seperti <p>. Dapat digunakan saat ingin menerapkan suatu style pada semua elemen dengan HTML tag yang spesifik seperti headings, paragraf, lists, links, dll. Type selector bermanfaat untuk menerapkan konsistensi, semantic styling, simplisitas, dan menargetkan semua elemen dari suatu tipe spesifik
+
+- Class Selector:
+Class selector adalah selector yang digunakan untuk memilih satu atau lebih elemen dari HTML berdasarkan value 'class' yang telah didefinisikan terhadap elemen masing - masing. Class selector diawali dengan '.' dan diikuti dengan nama class nya. Class selector dapat digunakan ketika ingin melakukan styling terhadap beberapa elemen dengan karakteristik visual yang sama, membuat kustomisasi style untuk individual komponen atau widget pada halaman web, dan ketika ingin menerapkan style kepada elemen - elemen yang memiliki HTML type yang berbeda. Class selector bermanfaat dalam code reusability, spesifikasi, modularitas, dan melakukan override terhadap style default.
+
+- ID Selector :
+ID Selector digunakan saat ingin memilih satu HTML elemen berdasarkan attribut ID yang dimilikinya. ID selector diawali dengan '#' dan diikuti dengan nama ID nya. ID Selector dapat digunakan ketika ingin melakukan styling terhadap elemen spesifik, membuat anchors untuk in-page-navigation, dan menerapkan fungsionalitas JavaScript pada elemen spesifik. ID Selector memiliki manfaat berupa keunikan dan tingak spesifikitas yang tinggi.
+
+# 2. Jelaskan HTML5 Tag yang kamu ketahui.
+HTML5 adalah kumpulan elemen dan atribut yang meningkatkan efektivitas struktur dan semantik dari dokumen web. Berikut adalah beberapa contoh dari HTML5 tag:
+- <header>
+Tag ini merepresentasikan suatu kontainer untuk konten pengenalan atau kumpulan link navigasi yang bisasnya berisikan logo utama website, judul website, dan menu utama navigasi. Tag ini biasanya diletakkan pada bagian paling atas dari halaman atau section untuk membantu meningkatkan aksesibilitas dan struktur halaman.
+- <nav>
+Tag ini digunakan untuk mendefinisikan bagian dari link navigasi seperti menu atau navigasi bar. Tag ini digunakan untuk menu navigasi utama saja. 
+- <footer>
+Tag ini merepresentasikan footer dari suatu section ataupun dokumen. Pada bagian ini biasanya berisi metadata, informasi copyright, detail kontak, ataupun link lain yang berhubungan dengan dokumen
+
+# 3. Jelaskan perbedaan antara margin dan padding.
+| Aspek Perbeedaan | Margin | Padding |
+|----------|----------|----------|
+| Tujuan | Membuat ruang di luar border dari elemen serta mengatur ruang antar border elemen dan elemen lainnya | Membuat ruang  di dalam elemen di antara konten elemen dan bordernya |
+| Pengaruh terhadap ukuruan elemen | Tidak mengubah ukuran elemen, tetapi mengubah posisi terhadap elemen lain | Mengubah ukuran elemen |
+| Visibilitas | Pada umumnya margin dapat terlihat dan dapat membuat ruang antar elemen yang terlihat | Terlihat dalam elemennya membuat kontenn nya menjauh dari border |
+| Kasus penggunaan | Membuat ruang antar elemen, membuat margin di antara page, melakukan centering dari suatu elemen secara horizontal maupun vertikal, melakukan pengaturan terhadap layout dari elemen block-level | membuat ruang antar konten di dalam elemen, membuat tombol, cards, dan containers dengan internal spacing, serta melakukan pengaturan terhadap layout dari inline dan inline-block elements |
+
+# 4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+| Aspek Perbeedaan | CSS Tailwind | Bootstrap |
+|----------|----------|----------|
+| Approach | Utility-first approach yang menyediakan kumpulan dari utility classes yang dapat diterapkan pada elemen HTML. Class - class tersebut sudah memiliki style yang terdefinisi untuk beberapa aspek elemen seperti margin dan padding | Component-based yang menyediakan kumpulan komponen UI yang sudah didesain sebelumnya yang dapat digunakan dan diubah sesuai pengguna |
+| Kustomisasi | Dapat diubah dengan cukup kompleks sesuai dengan kebutuhan pengguna | Dapat diubah tetapi terdapat batasan |
+| Ukuran file | Menghasilkan file CSS yang lebih kecil ukruannya karena hanya berisikan style yang digunakan membuat lebih efisien dalam aspek performa | Menghasilkan file CSS yang lebih besar ukurannya karena berisikan styles untuk semua komponen walaupun tidak digunakan. Hal ini dapat mengaruhi load time  |
+| Kasus penggunaan | Proyek yang membutuhkan kustomisasi desain dan  kontrol terhadap style yang digunakan | Proyek yang memiliki desain yang konsisten dan sudah sesuai standar. Bootstrap juga cocok untuk kolaborasi tim dan memastikan semua hasilnya memiliki tampilan yang sama dan sesuai |
+
+# 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
+- Pertama saya membuat suatu design dan warna yang univrsal untuk semua tampilan HTML dengan menggunakan warna '#3b5d81' dan font 'Courier New', Courier, monospace'
+
+- Kemudian saya menerapkannya pada HTML masing - masing dengan menggunakan style block dan juga menerapkan placement yang sesuai dengan selector
+
+- Saya juga menaruh berbagai itmem di dalam container agar terlihat rapih dan juga navbar pada main.html
+>>>>>>> 36593b9 (Tugas 5 selesai)

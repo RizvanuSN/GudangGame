@@ -1,36 +1,123 @@
-<style>
-    h1, h2, h3, h4, h5, h6, tr, td {
-        font-family:'Courier New', Courier, monospace;
-        margin-bottom: 5px; 
-        text-align: left;
-    }
+{% extends 'base.html' %}
 
-    input[type="submit"] {
-        font-family:'Courier New', Courier, monospace;
-        background-color: #3b5d81;
-        color: white;
-    }
-
-    input[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-</style>   
-{% extends 'base.html' %} 
+{% block meta %}
+    <title>Add New Product</title>
+{% endblock meta %}
 
 {% block content %}
-<h1>Add New Game</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Product</title>
+    <style>
+        body {
+            background-image: url('https://preview.redd.it/breluv06gbc31.png?width=1080&crop=smart&auto=webp&s=61cb8a253bc8c890080f038bdea2e4a290bdadf1');
+            font-family: 'Courier New', Courier, monospace;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #3b5d81;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Add Game"/>
-            </td>
-        </tr>
-    </table>
-</form>
+        .add-product {
+            max-width: 700px;
+            padding: 30px;
+            background-color: #ffffffa9;
+            backdrop-filter: blur;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
 
-{% endblock %}
+        .add-product h1 {
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .add-product form {
+            text-align: left;
+        }
+
+        .add-product form table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .add-product form td {
+            padding: 10px;
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .add-product form input[type="text"],
+        .add-product form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .add-product form input[type="submit"] {
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 80px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h5 {
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .add-product form input[type="submit"]:hover {
+            background-color: #074486;
+            color: #eff3f7;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="add-product">
+        <h1>Add New Product</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Add Product">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock content %}
