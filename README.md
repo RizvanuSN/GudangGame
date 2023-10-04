@@ -795,11 +795,11 @@ ID Selector digunakan saat ingin memilih satu HTML elemen berdasarkan attribut I
 
 # 2. Jelaskan HTML5 Tag yang kamu ketahui.
 HTML5 adalah kumpulan elemen dan atribut yang meningkatkan efektivitas struktur dan semantik dari dokumen web. Berikut adalah beberapa contoh dari HTML5 tag:
-- <header>
+- '<header>'
 Tag ini merepresentasikan suatu kontainer untuk konten pengenalan atau kumpulan link navigasi yang bisasnya berisikan logo utama website, judul website, dan menu utama navigasi. Tag ini biasanya diletakkan pada bagian paling atas dari halaman atau section untuk membantu meningkatkan aksesibilitas dan struktur halaman.
-- <nav>
+- '<nav>'
 Tag ini digunakan untuk mendefinisikan bagian dari link navigasi seperti menu atau navigasi bar. Tag ini digunakan untuk menu navigasi utama saja. 
-- <footer>
+- '<footer>'
 Tag ini merepresentasikan footer dari suatu section ataupun dokumen. Pada bagian ini biasanya berisi metadata, informasi copyright, detail kontak, ataupun link lain yang berhubungan dengan dokumen
 
 # 3. Jelaskan perbedaan antara margin dan padding.
