@@ -20,13 +20,17 @@ from main.forms import Product
 @login_required(login_url='/login')    
 def show_main(request):
     products = Product.objects.filter(user=request.user)
+    if 'last_login' in request.COOKIES:
+        last_login = request.COOKIES['last_login']
+    else:
+        last_login = 'N/A'  # Set a default value or handle the case when the key doesn't exist
 
     context = {
         'name': request.user.username,
         'class': 'PBP F', # Kelas PBP kamu
         'products': products,
         'total' : products.__len__(),
-        'last_login': request.COOKIES['last_login'],
+        'last_login': last_login,
     }
 
     return render(request, "main.html", context)

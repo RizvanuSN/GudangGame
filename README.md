@@ -774,8 +774,6 @@ path('remove_product/<int:id>', remove_product, name='remove_product'),
 </td>
 ...
 ~~~
-<<<<<<< HEAD
-=======
 
 # TUGAS 4!!
 
@@ -824,4 +822,3 @@ Tag ini merepresentasikan footer dari suatu section ataupun dokumen. Pada bagian
 - Kemudian saya menerapkannya pada HTML masing - masing dengan menggunakan style block dan juga menerapkan placement yang sesuai dengan selector
 
 - Saya juga menaruh berbagai itmem di dalam container agar terlihat rapih dan juga navbar pada main.html
->>>>>>> 36593b9 (Tugas 5 selesai)
