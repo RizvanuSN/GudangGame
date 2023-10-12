@@ -18,14 +18,14 @@
     }
 
 
-    .product-table {
+    table {
         width: 100%;
         border-collapse: collapse;
         border-radius: 50px;
         margin-top: 20px;
     }
 
-    .product-table th, .product-table td {
+    table th, table td {
         font-family:'Courier New', Courier, monospace;
         border: 1px solid #ddd;
         padding: 8px;
@@ -33,7 +33,7 @@
         border-color: black;
     }
 
-    .product-table th {
+    table th {
         background-color: #3b5d81;
         color: white;
     }
@@ -62,7 +62,7 @@
         padding: 5px;
         border: 1px solid #ddd;
         border-radius: 5px;
-
+        
     }
 
     .btn_bonus:hover, .edit_button:hover{
@@ -134,8 +134,28 @@
         align-self:auto;
     }
 
-    .user-name{
+    .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.33% - 20px); /* 3 item per baris */
+            background-color: #fff;
+    }
 
+    .card-container {
+            margin-top: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            flex-wrap: nowrap; 
+            justify-content: flex-start; 
+            gap: 5px;
+            overflow-x: auto; 
+            justify-items: center; 
+            align-items: center;
+            justify-content: center;
+            margin: 28px;
     }
 
     svg{
@@ -146,6 +166,27 @@
         background-color: #b3b4b5; 
     }
 
+    .no-underline{
+        text-decoration: none;
+    }
+
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        gap: 5px; 
+    }
+
+    .card:last-child {
+        background-color:#3b5d81; /* Change the color to your preference */
+        color: #fff; /* Text color for the last card */
+    }
+    
+    .last-row {
+        background-color: #3b5d81; /* Change the color to your preference */
+        color: white; /* Text color for the last row */
+    }
 
 </style>
 
@@ -160,66 +201,74 @@
         <span class="last-login">Last Login: {{ last_login }}</span>
     </div>
                         
-    <h1 class="Title">Gudang Game : The Inventory for Games</h1>
+    <h1 class="Title">GudangGame : The Inventory for Games</h1>
     <svg width="138px" height="138px" viewBox="0 0 48 48" id="b" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.c{fill:#3b5d81;}.d{fill:none;stroke:#3b5d81;stroke-linecap:round;stroke-linejoin:round;}</style> </defs> <g> <line class="d" x1="14.25" y1="20.8401" x2="14.25" y2="15.4132"></line> <line class="d" x1="11.5366" y1="18.1267" x2="16.9634" y2="18.1267"></line> <path class="d" d="m17.1869,10.8372v-1.6128c0-.581-.471-1.052-1.052-1.052h-3.7698c-.581,0-1.052.471-1.052,1.052v1.7708"></path> <path class="d" d="m29.0435,24.8808l4.5534,6.83c1.485,2.2276,4.377,3.0323,6.7991,1.8919,2.2669-1.0672,3.5041-3.5476,2.9874-5.9993-.9842-4.6705-1.7692-9.0259-2.5726-11.9826-.8457-3.1124-3.8836-5.2804-7.2842-5.2804-2.0521,0-3.9114.8108-5.2876,2.1236h-8.4779c-1.3763-1.3128-3.2355-2.1236-5.2876-2.1236-3.4006,0-6.4386,2.1681-7.2842,5.2804-.8034,2.9567-1.5884,7.3122-2.5726,11.9826-.5167,2.4517.7205,4.9321,2.9874,5.9993,2.4221,1.1404,5.3141.3357,6.7991-1.8919l4.5534-6.83h10.087Z"></path> <path class="d" d="m30.8131,10.8372v-1.6128c0-.581.471-1.052,1.052-1.052h3.7698c.581,0,1.052.471,1.052,1.052v1.7708"></path> <circle class="c" cx="31.03" cy="18.1267" r=".75"></circle> <circle class="c" cx="36.4634" cy="18.1267" r=".75"></circle> <circle class="c" cx="33.75" cy="15.4132" r=".75"></circle> <circle class="c" cx="33.75" cy="20.8401" r=".785"></circle> </g> <g> <path class="d" d="m20.8882,34.6779s.2691,3.6048,4.1955,5.1496c-1.5126-2.8643,2.3172-5.4068,2.2206-7.2091.7724,1.4482.2896,3.0574.2896,3.0574,0,0,4.0551-5.3746-2.3816-8.6895,1.0299,1.8988,1.223,1.9632,1.223,3.7976"></path> <path class="d" d="m26.3767,29.597s-2.9022,2.0559-2.5803,4.7593c-1.3267-1.3611-1.2874-1.931-1.223-3.8942-2.1715-.0043-.8818-2.2473.2575-3.4758-4.5378,1.7057-4.2804,6.5654-2.4459,8.9148.4184-1.6092,1.3302-2.1501,1.3302-2.1501"></path> </g> </g></svg>  
     
-
+    <div id="product_card" class="container_cards container card-container"></div>
     <div class="container">
-    <table class="product-table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Developer</th>
-                <th>Genre</th>
-                <th>Price ($)</th>
-                <th>Amount</th>
-                <th>Description</th>
-                <th>Date Added</th>
-                <th>Edit</th>
-            </tr>
-        </thead>
+    <h5 class="total">Anda telah menambahkan game sebanyak <span id="item-count">{{total}}</span> game</h5>
+    <table id="product_table"></table>
     
-        <h5 class="total">Anda telah menambahkan game sebanyak {{total}} game</h5>
-        
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.developer }}</td>
-                    <td>{{ product.genre }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <form method="post" action="{% url 'main:plus_product_amount' product.id %}">
-                            {% csrf_token %}
-                            <button class="btn_bonus">+</button>
-                        </form>
-                        {{ product.amount }}
-                        <form method="post" action="{% url 'main:minus_product_amount' product.id %}">
-                            {% csrf_token %}
-                            <button class="btn_bonus">-</button>
-                        </form>
-                        <form method="post" action="{% url 'main:remove_product' product.id %}">
-                            {% csrf_token %}
-                            <button class="btn_bonus">Delete</button>
-                        </form>
-                
-                    </td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.date_added }}</td>
-                    <td>
-                        <a href="{% url 'main:edit_product' product.pk %}">
-                            <button class="edit_button">
-                                Edit
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <br />
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Game</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="developer" class="col-form-label">Developer:</label>
+                            <input type="text" class="form-control" id="developer" name="developer"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="genre" class="col-form-label">Genre:</label>
+                            <input type="text" class="form-control" id="genre" name="genre"></input>
+                        </div>
+
+
+                        
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="price" name="amount"></input>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="img_url" class="col-form-label">Image URL:</label>
+                            <textarea class="form-control" id="img_url" name="img_url"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">Add Game by AJAX</button>
+
     
     <a href="{% url 'main:create_product' %}">
         <button class="add-button">
@@ -228,4 +277,143 @@
     </a>
     </div>
 
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+ 
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = "";
+        const products = await getProducts();
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Developer</th>
+            <th>Genre</th>
+            <th>Price ($)</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date Added</th>
+            <th>Edit</th>
+            <th>Remove</th>
+        </tr>`;
+        products.forEach((item, index) => {
+            const isLastRow = index === products.length - 1;
+            const rowClass = isLastRow ? "last-row" : "";
+
+            htmlString += `<tr class="${rowClass}">
+                <td>${item.fields.name}</td>
+                <td>${item.fields.developer}</td>
+                <td>${item.fields.genre}</td>
+                <td>${item.fields.price}</td>
+                <td class="button-container">
+                    <button onclick="increaseAmount(${item.pk})" class="btn_bonus btn_primary">
+                        +
+                    </button>
+                    ${item.fields.amount}
+                    <button onclick="decreaseAmount(${item.pk})" class="btn_bonus btn_primary">
+                        -
+                    </button>
+                </td>
+                <td>${item.fields.description}</td>
+                <td>${item.fields.date_added}</td>
+                <td>
+                    <a href="/edit-product/${item.pk}" class="edit_button btn_primary no-underline">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <button class="btn_primary edit_button" onclick="delete_product_ajax(${item.pk})">Delete</button>
+                </td>
+            </tr>`;
+        });
+
+        document.getElementById("product_table").innerHTML = htmlString;
+    }
+
+
+    refreshProducts()
+
+    async function cardsProduct() {
+        document.getElementById("product_card").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = ''
+        products.forEach((item) => {
+            htmlString += `
+            <div class="card" style="width: 18rem;">
+                <img src="${item.fields.img_url}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${item.fields.name}</h5>
+                    <p class="card-text">Developer : ${item.fields.developer}</p>
+                    <p class="card-text">Genre : ${item.fields.genre}</p>
+                    <p class="card-text">Price : $${item.fields.price}</p>
+                </div>
+            </div>
+            `
+        })
+        document.getElementById("product_card").innerHTML = htmlString
+    }
+
+
+    cardsProduct()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts).then(cardsProduct)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addProduct
+
+    
+    function increaseAmount(productId) {
+        fetch(`/plus_product_amount/${productId}`, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken"),
+            },
+        })
+            .then(() => refreshProducts())
+            .catch((error) => console.error("Error:", error));
+    }
+
+    function decreaseAmount(productId) {
+        fetch(`/minus_product_amount/${productId}`, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken"),
+            },
+        })
+            .then(() => refreshProducts())
+            .catch((error) => console.error("Error:", error));
+    }
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function delete_product_ajax(ID) {
+        fetch(`/remove_product_ajax/${ID}`, {
+            method: 'DELETE',
+        }).then(refreshProducts).then(cardsProduct)
+        }
+    document.getElementById("button-add").onclick = addProduct
+    
+
+</script>
+
 {% endblock content %}
+

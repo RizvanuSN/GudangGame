@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from django.views.decorators.csrf import csrf_exempt
 
 from main.forms import Product
 
@@ -118,7 +118,6 @@ def remove_product(request, id):
     response = HttpResponseRedirect(reverse("main:show_main"))
     return response
 
-
 def edit_product(request, id):
     # Get product berdasarkan ID
     product = Product.objects.get(pk = id)
@@ -133,3 +132,34 @@ def edit_product(request, id):
 
     context = {'form': form}
     return render(request, "edit_product.html", context)
+
+@login_required(login_url='/login')
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        user = request.user
+        name = request.POST.get("name")
+        developer = request.POST.get("developer")
+        genre = request.POST.get("genre")
+        price = request.POST.get("price")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        date_added = request.POST.get("date_added")
+        img_url = request.POST.get("img_url")
+
+
+        new_product = Product(user=user,name=name,developer=developer,genre=genre, price=price, amount=amount, description=description, date_added=date_added, img_url=img_url)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def remove_product_ajax(request, id):
+    Product.objects.filter(pk=id).delete()
+    return HttpResponseRedirect(reverse("main:show_main"))

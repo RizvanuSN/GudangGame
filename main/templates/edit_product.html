@@ -1,7 +1,102 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="add-product">
+!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Product</title>
+    <style>
+        body {
+            background-image: url('https://preview.redd.it/breluv06gbc31.png?width=1080&crop=smart&auto=webp&s=61cb8a253bc8c890080f038bdea2e4a290bdadf1');
+            font-family: 'Courier New', Courier, monospace;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #3b5d81;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edit-product {
+            max-width: 700px;
+            padding: 30px;
+            background-color: #ffffffa9;
+            backdrop-filter: blur;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .edit-product h1 {
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .edit-product form {
+            text-align: left;
+        }
+
+        .edit-product form table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+
+        }
+
+        .edit-product form td {
+            padding: 10px;
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .edit-product form input[type="text"], .edit-product form input[type="password"] , .edit-product form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .edit-product form input[type="submit"] {
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 80px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h5 {
+            font-family:'Courier New', Courier, monospace;
+            margin-bottom: 5px; 
+            color: #3b5d81;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .edit-product form input[type="submit"]:hover {
+            background-color: #074486;
+            color: #eff3f7;
+        }
+
+    </style>
+
+<div class="edit-product">
     <h1>Edit Product</h1>
 
     <form method="POST">
@@ -11,7 +106,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Edit Product"/>
+                    <input type="submit" value="Accept"/>
                 </td>
             </tr>
         </table>

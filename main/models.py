@@ -11,3 +11,4 @@ class Product(models.Model):
     amount = models.IntegerField(default="")
     description = models.TextField()
     date_added = models.DateField(auto_now_add=True)
+    img_url = models.TextField()

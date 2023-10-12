@@ -775,7 +775,7 @@ path('remove_product/<int:id>', remove_product, name='remove_product'),
 ...
 ~~~
 
-# TUGAS 4!!
+# TUGAS 5!!
 
 # 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 Element selector adalah jenis selector pada CSS yang dapat digunakan dalam memilih elemen HTML berdasarkan nama elemennya. Adapun tipe dan manfaat dari tiap element selector :
@@ -822,3 +822,291 @@ Tag ini merepresentasikan footer dari suatu section ataupun dokumen. Pada bagian
 - Kemudian saya menerapkannya pada HTML masing - masing dengan menggunakan style block dan juga menerapkan placement yang sesuai dengan selector
 
 - Saya juga menaruh berbagai itmem di dalam container agar terlihat rapih dan juga navbar pada main.html
+
+# TUGAS 6!!
+
+# 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Synchronous Programming
+- Eksekusi program berjalan satu langkah pada waktu secara berurutan yang berarti setiap operasi atau tugas harus selesai sebelum program melangkah ke berikutnya.
+- Hal ini mengakibatkan program berjalan secara linear dan blokir. Saat terjadi operasi yang lama, program akan berhenti dan menunggu operasi tersebut selesai sebelum melanjutkan.
+
+Asynchronous Programming
+- Program dapat melanjutkan eksekusi walaupun operasi tertentu sedang dijalankan. Hal ini berarti tugas - tugas yang memakan waktu lebih lama dapat dilakukan secara bersamaan tanpa menunggu tugas sebelumnya selesai.
+- Hal ini memungkinkan program untuk tetap responsif dan tidak terblokir terutama saat melakukan tugas yang memerlukan waktu lebih lama
+
+Pada dasarnya asynchronous programming dapat berguna pada situasi di mana terdapat banyak operasi yang memakan waktu dan ketika respon yang cepat dan tidak terblokir bersifat wajib seperti dalam aplikasi web dan server. Sedangkan, synchronous programming lebih sederhana dan cocok dalam tugas - tugas sederhana yang berurutan.
+
+# 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma event-driven programming adalah suatu pendekatan dalam pemrograman di mana program merespons peristiwa (events) yang terjadi, seperti interaksi pengguna (mouse clicks, keyboard input, tombol-tombol), permintaan jaringan, atau peristiwa lainnya. Sebagai contoh, dalam pemrograman berbasis web dengan JavaScript, banyak peristiwa terjadi di browser, dan program harus meresponsnya secara dinamis. Contoh penerapan paradigma ini pada tugas PBP adalah menggunakan AJAX untuk mengirim permintaan ke server dan menanggapi hasilnya.
+
+Salah satu contoh penerapannya adalah dendan menggunakan even listener. Pada hal ini fungsi merespons suatu perestiwa dengan menjalankan tindakan yang sesuai.
+
+Pada tugas ini, penerapan evenlistener adalah seperti pada tombol mengurangi properti 'amount' dari Product. Saat tombol ditekan, akan terdapat eventlistener yang akan mengetahui bahwa tombol sudah ditekan dan fungsi pada javascript main.html akan dijalankan. Fungsi tersebut akan mengakses fungsi yang sesuai pada views.py dan akan mengurangi jumlah dari product tersebut.
+
+# 3. Jelaskan penerapan asynchronous programming pada AJAX.
+Penerapan asynchronous programming pada AJAX (Asynchronous JavaScript and XML) sangat penting dalam pengembangan aplikasi web modern. Hal ini memungkinkan aplikasi web untuk melakukan operasi jaringan, seperti mengambil atau mengirim data ke server, tanpa menghentikan eksekusi program di sisi klien (browser). Berikut adalah penjelasan lebih detail mengenai penerapan asynchronous programming pada AJAX:
+- Asynchronous Request Handling: 
+Pengguna dapat mengirim permintaan jaringan seperti HTTP secara asinkronus yang berarti kode JavaScript tidak akan diblokir saat menunggu respons dari server. 
+- Event Handling
+Ketika permintaan AJAX selesai, berdasarkan hasilnya (berhasil atau gagal), pengguna dapat menggunakan event listener untuk mengeksekusi kode yang sesuai. Ini berarti pengguna dapat menghubungkan tindakan tertentu dengan permintaan selesai atau kesalahan.
+
+# 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+#### Fetch API:
+Kelebihan:
+- Lebih modern: Fetch API adalah standar baru dalam JavaScript, sehingga lebih modern dan direkomendasikan dalam pengembangan web terbaru.
+- Lebih ringan: Fetch API adalah bagian dari JavaScript murni, sehingga ukurannya lebih kecil daripada library seperti jQuery.
+- Promises: Menggunakan Promises, yang memungkinkan penanganan yang lebih baik terhadap respons asinkronus dan membuat kode lebih bersih dan mudah dipahami.
+- Dukungan untuk JSON: Menangani tipe data JSON secara alami dan mudah.
+- Tidak ada ketergantungan pihak ketiga: Tidak perlu mengunduh library eksternal, sehingga meningkatkan kecepatan loading dan mengurangi kemungkinan konflik.
+
+ Kekurangan:
+- Memerlukan penanganan khusus untuk menangani beberapa tugas yang mungkin lebih mudah dengan jQuery.
+- Tidak kompatibel dengan browser lama, kecuali jika  menggunakan polifil.
+
+#### jQuery:
+Kelebihan:
+- Kompatibilitas browser yang lebih luas: jQuery dirancang untuk mendukung berbagai jenis browser, termasuk yang lebih lama.
+- Kemudahan penggunaan: jQuery memiliki antarmuka yang mudah digunakan dan sederhana untuk mengatasi tugas-tugas yang umum digunakan dalam pengembangan web.
+- Kode yang lebih pendek:  Memerlukan lebih sedikit kode untuk melakukan tugas tertentu dibandingkan dengan JavaScript murni.
+- Fitur yang lebih tinggi tingkat: jQuery menyediakan berbagai fitur tambahan, seperti animasi dan manipulasi DOM.
+
+Kekurangan:
+- Ukuran yang lebih besar: jQuery memiliki ukuran yang lebih besar daripada Fetch API, yang dapat mempengaruhi kinerja dan waktu loading.
+- Pemeliharaan: Pengembang jQuery perlu memperbarui dan merawat library ini, yang mungkin memerlukan pembaruan berkala.
+
+Penggunaan Fetch API lebih disarankan dalam pengembangan web yang lebih baru dan modern. Ini karena Fetch API lebih ringan, modern, dan memanfaatkan Promises, yang memudahkan penanganan AJAX. Selain itu, penggunaan Fetch API juga mendorong pengembang untuk menjadi lebih sadar terhadap kompatibilitas dan performa, serta meminimalkan ketergantungan terhadap pustaka eksternal. Namun, dalam beberapa kasus, khususnya jika  perlu mendukung browser lama, jQuery masih dapat menjadi pilihan yang sah. Keputusan akhir tergantung pada konteks dan kebutuhan proyek.
+
+# 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- Membuat container bagi card
+~~~
+...
+ <div id="product_card" class="container_cards container card-container"></div>
+...
+~~~
+
+- Membuat fungsi baru pada views.py untuk mendapatkan Product dalam bentuk json
+~~~
+...
+@login_required(login_url='/login')
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+...
+~~~
+
+- Membuat fungsi pada JavaScript yang ada di main.html untuk mendapatkan product dalam bentuk JSON
+~~~
+...
+async function getProducts() {
+    return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+}
+...
+~~~
+
+- Fungsi untuk menampilkan semua product pada cards 
+~~~
+...
+async function cardsProduct() {
+    document.getElementById("product_card").innerHTML = ""
+    const products = await getProducts()
+    let htmlString = ''
+    products.forEach((item) => {
+        htmlString += `
+        <div class="card" style="width: 18rem;">
+            <img src="${item.fields.img_url}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${item.fields.name}</h5>
+                <p class="card-text">Developer : ${item.fields.developer}</p>
+                <p class="card-text">Genre : ${item.fields.genre}</p>
+                <p class="card-text">Price : $${item.fields.price}</p>
+            </div>
+        </div>
+        `
+    })
+    document.getElementById("product_card").innerHTML = htmlString
+}
+...
+~~~
+
+- Fungsi untuk mengubah tabel yang sudah ada sebelumnya agar menjadi sesuai dengan AJAX
+~~~
+...
+async function refreshProducts() {
+    document.getElementById("product_table").innerHTML = "";
+    const products = await getProducts();
+    let htmlString = `<tr>
+        <th>Name</th>
+        <th>Developer</th>
+        <th>Genre</th>
+        <th>Price ($)</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Date Added</th>
+        <th>Edit</th>
+        <th>Remove</th>
+    </tr>`;
+    products.forEach((item, index) => {
+        const isLastRow = index === products.length - 1;
+        const rowClass = isLastRow ? "last-row" : "";
+
+        htmlString += `<tr class="${rowClass}">
+            <td>${item.fields.name}</td>
+            <td>${item.fields.developer}</td>
+            <td>${item.fields.genre}</td>
+            <td>${item.fields.price}</td>
+            <td class="button-container">
+                <button onclick="increaseAmount(${item.pk})" class="btn_bonus btn_primary">
+                    +
+                </button>
+                ${item.fields.amount}
+                <button onclick="decreaseAmount(${item.pk})" class="btn_bonus btn_primary">
+                    -
+                </button>
+            </td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.date_added}</td>
+            <td>
+                <a href="/edit-product/${item.pk}" class="edit_button btn_primary no-underline">
+                    Edit
+                </a>
+            </td>
+            <td>
+                <button class="btn_primary edit_button" onclick="delete_product_ajax(${item.pk})">Delete</button>
+            </td>
+        </tr>`;
+    });
+
+    document.getElementById("product_table").innerHTML = htmlString;
+}
+...
+~~~
+
+- Modal sebagai tempat menambahkan product baru dan membuat buttonnya
+~~~
+...
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Game</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="developer" class="col-form-label">Developer:</label>
+                        <input type="text" class="form-control" id="developer" name="developer"></input>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="genre" class="col-form-label">Genre:</label>
+                        <input type="text" class="form-control" id="genre" name="genre"></input>
+                    </div>
+
+
+                    
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="price" name="amount"></input>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="img_url" class="col-form-label">Image URL:</label>
+                        <textarea class="form-control" id="img_url" name="img_url"></textarea>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">Add Game by AJAX</button>
+...
+~~~
+
+- Membuat function untuk menambahkan product saat button ditekan dan membuat eventlistener agar mendeteksi hal tersebut
+~~~
+...
+function addProduct() {
+    fetch("{% url 'main:add_product_ajax' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+    }).then(refreshProducts).then(cardsProduct)
+
+    document.getElementById("form").reset()
+    return false
+}
+document.getElementById("button_add").onclick = addProduct
+...
+~~~
+
+- Membuat function - function untuk menyesuaikan tombol / fitur yang sudah dibuat pada tugas - tugas sebelumnya
+~~~
+...
+function increaseAmount(productId) {
+    fetch(`/plus_product_amount/${productId}`, {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+        },
+    })
+        .then(() => refreshProducts())
+        .catch((error) => console.error("Error:", error));
+}
+
+function decreaseAmount(productId) {
+    fetch(`/minus_product_amount/${productId}`, {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+        },
+    })
+        .then(() => refreshProducts())
+        .catch((error) => console.error("Error:", error));
+}
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function delete_product_ajax(ID) {
+    fetch(`/remove_product_ajax/${ID}`, {
+        method: 'DELETE',
+    }).then(refreshProducts).then(cardsProduct)
+    }
+document.getElementById("button-add").onclick = addProduct
+...
+~~~
