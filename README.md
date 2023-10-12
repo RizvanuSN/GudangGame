@@ -1110,3 +1110,5 @@ function delete_product_ajax(ID) {
 document.getElementById("button-add").onclick = addProduct
 ...
 ~~~
+
+## Tautan aplikasi : rizvanu-satrio-tugas
